@@ -1,7 +1,12 @@
 package wordie;
 
-public class wordieCheck {
+public class WordieCheck {
 	//count what line we are on
+	
+	//check if the user input is 5 letters
+	/*
+	 * public boolean letterCheck(String inputWord) { if (inputWord) }
+	 */
 	
 	//check selected word against input word
 	
