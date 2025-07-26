@@ -31,6 +31,10 @@ public class WordieApp extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtEnterWordHere;
+	private WordieCheck wordieCheck = new WordieCheck();
+	private SetUp setUp = new SetUp();
+	private int guessCount = 0;
+	private JLabel[][] rowArray; 
 
 	/**
 	 * Launch the application.
@@ -46,6 +50,8 @@ public class WordieApp extends JFrame {
 				}
 			}
 		});
+		
+		
 	}
 
 	/**
@@ -104,7 +110,7 @@ public class WordieApp extends JFrame {
 		A5.setOpaque(true);
 		A5.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		playingField.add(A5);
-
+		
 		/**
 		 * Row B
 		 */
@@ -200,6 +206,17 @@ public class WordieApp extends JFrame {
 		E5.setOpaque(true);
 		E5.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		playingField.add(E5);
+		
+		
+		JLabel[] rowA = {A1, A2, A3, A4, A5};
+		JLabel[] rowB = {B1, B2, B3, B4, B5};
+		JLabel[] rowC = {C1, C2, C3, C4, C5};
+		JLabel[] rowD = {D1, D2, D3, D4, D5};
+		JLabel[] rowE = {E1, E2, E3, E4, E5};
+		
+		rowArray = new JLabel[][] {rowA, rowB, rowC, rowD, rowE};
+		
+		
 
 		/**
 		 * Empty box section 1 to keep input box centered
@@ -253,6 +270,14 @@ public class WordieApp extends JFrame {
 			confirm.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					
+					String userGuessedWord = txtEnterWordHere.getText();
+					String actualWord = setUp.getTrialWord();
+					
+					if (wordieCheck.letterCountCheck(userGuessedWord) == true) {
+						wordieCheck.compareWords(userGuessedWord, actualWord, rowArray[guessCount], guessCount);
+						guessCount++;
+					}
 				}
 			});
 			confirm.setBackground(new Color(0, 123, 255));
@@ -270,6 +295,7 @@ public class WordieApp extends JFrame {
 			restart.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					
 				}
 			});
 			restart.setBackground(Color.GRAY);
