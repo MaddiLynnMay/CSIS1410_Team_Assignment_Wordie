@@ -18,6 +18,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -41,14 +42,17 @@ public class WordieApp extends JFrame {
 	private JComboBox<Topics> topicSelector;
 
 	/**
-	 * Launch the application.
+	 * Launch the application and have the frame centered.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					WordieApp frame = new WordieApp();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
+					ImageIcon wordieLogo = new ImageIcon("Resources/w.png");
+					frame.setIconImage(wordieLogo.getImage());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
