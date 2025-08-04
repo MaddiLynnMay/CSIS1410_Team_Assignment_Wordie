@@ -41,17 +41,15 @@ public class SetUp {
 		}
 
 		List<String> words = new ArrayList<>();
-		Scanner scanner = new Scanner(new File(basePath + fileName));
-
-		// Chooses only words that are five letters long
-		while (scanner.hasNextLine()) {
-			String word = scanner.nextLine().trim().toUpperCase();
-			if (word.length() == 5) {
-				words.add(word);
+		try (Scanner scanner = new Scanner(new File(basePath + fileName))) {
+			// Chooses only words that are five letters long
+			while (scanner.hasNextLine()) {
+				String word = scanner.nextLine().trim().toUpperCase();
+				if (word.length() == 5) {
+					words.add(word);
+				}
 			}
 		}
-
-		scanner.close();
 
 		// chooses random word
 		if (!words.isEmpty()) {
