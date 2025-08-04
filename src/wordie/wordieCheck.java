@@ -61,10 +61,14 @@ public class WordieCheck {
 				displayRow[i].setText(Character.toString(guessWord.charAt(i)));
 			}
 		}
+
+		
+		int lastGuess = 4;
+
 		if (guessWord.equals(actualWord)) {
 			userWinMessage();
 		} // if this is the fifth guess, and it isn't correct
-		else if (guessCount == 4) {
+		else if (guessCount == lastGuess) {
 			userLossMessage(actualWord);
 		}
 
